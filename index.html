@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ozone Layer — Cybersecurity Protection</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green-deep: #0d2b1a;
+    --green-dark: #133d26;
+    --green-mid: #1e5c38;
+    --green-base: #2d7a4f;
+    --green-light: #3da668;
+    --green-pale: #7ecba1;
+    --green-mist: #c2e8d2;
+    --green-fog: #e8f5ee;
+    --ozone-blue: #a8d8c8;
+    --ozone-glow: #5fbfa0;
+    --cream: #f5f0e8;
+    --cream-dark: #e8e0d0;
+    --text-dark: #0d2b1a;
+    --text-mid: #2d5a40;
+    --text-light: #5a8a6e;
+    --white: #ffffff;
+    --font-display: 'Syne', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--green-deep);
+    color: var(--cream);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 4rem;
+    background: rgba(13, 43, 26, 0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(168, 216, 200, 0.1);
+  }
+
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .logo-mark {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, var(--green-light), var(--ozone-blue), var(--green-pale), var(--green-light));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: spin-slow 12s linear infinite;
+  }
+
+  .logo-mark-inner {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--green-deep);
+  }
+
+  @keyframes spin-slow { to { transform: rotate(360deg); } }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--green-mist);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--white); }
+
+  .nav-cta {
+    background: var(--green-light);
+    color: var(--green-deep) !important;
+    padding: 0.55rem 1.25rem;
+    border-radius: 100px;
+    font-weight: 500 !important;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--green-pale) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 8rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(61, 166, 104, 0.18) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 40% at 20% 80%, rgba(95, 191, 160, 0.1) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 50% at 80% 60%, rgba(45, 122, 79, 0.12) 0%, transparent 60%);
+  }
+
+  .hero-rings {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 900px;
+    height: 900px;
+    pointer-events: none;
+  }
+
+  .ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(168, 216, 200, 0.08);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulse-ring 4s ease-in-out infinite;
+  }
+
+  .ring:nth-child(1) { width: 300px; height: 300px; animation-delay: 0s; }
+  .ring:nth-child(2) { width: 500px; height: 500px; animation-delay: 0.8s; border-color: rgba(168,216,200,0.06); }
+  .ring:nth-child(3) { width: 700px; height: 700px; animation-delay: 1.6s; border-color: rgba(168,216,200,0.04); }
+  .ring:nth-child(4) { width: 900px; height: 900px; animation-delay: 2.4s; border-color: rgba(168,216,200,0.02); }
+
+  @keyframes pulse-ring {
+    0%, 100% { opacity: 0.4; transform: translate(-50%, -50%) scale(1); }
+    50% { opacity: 1; transform: translate(-50%, -50%) scale(1.02); }
+  }
+
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ozone-glow);
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    animation: fade-up 0.8s ease both;
+  }
+
+  .hero-eyebrow::before,
+  .hero-eyebrow::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--ozone-glow);
+    opacity: 0.5;
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    color: var(--white);
+    margin-bottom: 0.3em;
+    position: relative;
+    animation: fade-up 0.8s 0.1s ease both;
+  }
+
+  .hero-title-accent {
+    color: var(--green-pale);
+    display: block;
+  }
+
+  .hero-sub {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-weight: 300;
+    color: var(--green-mist);
+    max-width: 560px;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+    position: relative;
+    animation: fade-up 0.8s 0.2s ease both;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+    animation: fade-up 0.8s 0.3s ease both;
+  }
+
+  .btn-primary {
+    background: var(--green-light);
+    color: var(--green-deep);
+    padding: 0.9rem 2rem;
+    border-radius: 100px;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-primary:hover {
+    background: var(--green-pale);
+    transform: translateY(-2px);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--cream);
+    padding: 0.9rem 2rem;
+    border-radius: 100px;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 400;
+    text-decoration: none;
+    transition: all 0.2s;
+    border: 1px solid rgba(168, 216, 200, 0.25);
+    cursor: pointer;
+  }
+
+  .btn-ghost:hover {
+    border-color: rgba(168, 216, 200, 0.6);
+    background: rgba(168, 216, 200, 0.05);
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 3rem;
+    margin-top: 5rem;
+    position: relative;
+    animation: fade-up 0.8s 0.4s ease both;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--green-pale);
+    margin-top: 4px;
+  }
+
+  .stat-divider {
+    width: 1px;
+    background: rgba(168,216,200,0.15);
+    align-self: stretch;
+  }
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* SECTION BASE */
+  section { padding: 7rem 4rem; }
+
+  .section-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ozone-glow);
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    margin-bottom: 1.25rem;
+  }
+
+  .section-body {
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: var(--green-mist);
+    line-height: 1.7;
+    max-width: 520px;
+  }
+
+  /* ABOUT */
+  .about {
+    background: var(--green-dark);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .about-visual {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .about-shield {
+    width: 280px;
+    height: 280px;
+    position: relative;
+  }
+
+  .shield-ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 1px solid rgba(126, 203, 161, 0.2);
+    animation: shield-pulse 3s ease-in-out infinite;
+  }
+
+  .shield-ring:nth-child(2) { inset: 20px; border-color: rgba(126,203,161,0.3); animation-delay: 0.5s; }
+  .shield-ring:nth-child(3) { inset: 40px; border-color: rgba(126,203,161,0.4); animation-delay: 1s; }
+
+  @keyframes shield-pulse {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.04); }
+  }
+
+  .shield-center {
+    position: absolute;
+    inset: 60px;
+    background: linear-gradient(135deg, var(--green-mid), var(--green-base));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .shield-icon {
+    font-size: 3rem;
+    filter: brightness(0) invert(1);
+    opacity: 0.9;
+  }
+
+  .about-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 2rem;
+  }
+
+  .tag {
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    color: var(--green-pale);
+    border: 1px solid rgba(126, 203, 161, 0.25);
+    padding: 0.35rem 0.85rem;
+    border-radius: 100px;
+    background: rgba(126,203,161,0.05);
+  }
+
+  /* SERVICES */
+  .services {
+    background: var(--green-deep);
+  }
+
+  .services-header {
+    max-width: 600px;
+    margin-bottom: 4rem;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: rgba(168,216,200,0.1);
+    border: 1px solid rgba(168,216,200,0.1);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .service-card {
+    background: var(--green-deep);
+    padding: 2.5rem;
+    transition: background 0.3s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--green-light), var(--ozone-glow));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+
+  .service-card:hover { background: var(--green-dark); }
+  .service-card:hover::before { transform: scaleX(1); }
+
+  .service-num {
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    color: var(--ozone-glow);
+    margin-bottom: 1.25rem;
+  }
+
+  .service-icon {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .service-name {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.01em;
+  }
+
+  .service-desc {
+    font-size: 0.88rem;
+    font-weight: 300;
+    color: var(--green-mist);
+    line-height: 1.6;
+  }
+
+  .service-price {
+    margin-top: 1.5rem;
+    font-size: 0.8rem;
+    color: var(--green-pale);
+    letter-spacing: 0.05em;
+  }
+
+  /* COURSES */
+  .courses {
+    background: var(--green-dark);
+  }
+
+  .courses-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .course-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: rgba(168,216,200,0.1);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .course-item {
+    background: var(--green-dark);
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: background 0.2s;
+    gap: 1rem;
+  }
+
+  .course-item:hover { background: var(--green-mid); }
+
+  .course-item-left { display: flex; align-items: center; gap: 1rem; }
+
+  .course-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--green-pale);
+    flex-shrink: 0;
+  }
+
+  .course-name {
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--white);
+  }
+
+  .course-badge {
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.6rem;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+
+  .badge-soon { background: rgba(168,216,200,0.1); color: var(--ozone-blue); }
+  .badge-live { background: rgba(61,166,104,0.2); color: var(--green-pale); }
+  .badge-free { background: rgba(95,191,160,0.15); color: var(--ozone-glow); }
+
+  /* PRODUCTS */
+  .products {
+    background: var(--green-deep);
+  }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-top: 3rem;
+  }
+
+  .product-card {
+    background: var(--green-dark);
+    border: 1px solid rgba(168,216,200,0.08);
+    border-radius: 12px;
+    padding: 1.75rem;
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+
+  .product-card:hover {
+    border-color: rgba(168,216,200,0.25);
+    transform: translateY(-4px);
+  }
+
+  .product-emoji { font-size: 1.5rem; margin-bottom: 1rem; display: block; }
+
+  .product-name {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+  }
+
+  .product-desc {
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: var(--green-mist);
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
+  }
+
+  .product-price {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--green-pale);
+  }
+
+  /* CTA */
+  .cta-section {
+    background: var(--green-mid);
+    text-align: center;
+    padding: 7rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 800px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(61,166,104,0.2) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cta-section .section-title { max-width: 600px; margin: 0 auto 1rem; }
+  .cta-section .section-body { margin: 0 auto 2.5rem; text-align: center; }
+
+  /* FOOTER */
+  footer {
+    background: var(--green-deep);
+    border-top: 1px solid rgba(168,216,200,0.08);
+    padding: 3rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-logo {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--white);
+  }
+
+  .footer-copy {
+    font-size: 0.8rem;
+    color: var(--text-light);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .footer-links a {
+    font-size: 0.8rem;
+    color: var(--green-mist);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--white); }
+
+  /* SCROLL REVEAL */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="logo-mark"><div class="logo-mark-inner"></div></div>
+    Ozone Layer
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#courses">Courses</a></li>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#contact" class="nav-cta">Work With Me</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-rings">
+    <div class="ring"></div>
+    <div class="ring"></div>
+    <div class="ring"></div>
+    <div class="ring"></div>
+  </div>
+
+  <div class="hero-eyebrow">Cybersecurity — Consulting — Education</div>
+
+  <h1 class="hero-title">
+    Your protective
+    <span class="hero-title-accent">layer.</span>
+  </h1>
+
+  <p class="hero-sub">
+    Defense-environment expertise brought to small businesses and aspiring security professionals. Real protection, built by someone who's done it.
+  </p>
+
+  <div class="hero-actions">
+    <a href="#services" class="btn-primary">Explore Services</a>
+    <a href="#courses" class="btn-ghost">Browse Courses</a>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">10+</div>
+      <div class="stat-label">Years in IT & Security</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat">
+      <div class="stat-num">Sec+</div>
+      <div class="stat-label">CompTIA Certified</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat">
+      <div class="stat-num">GTRI</div>
+      <div class="stat-label">Defense Research Background</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-content reveal">
+    <div class="section-label">Who's behind the layer</div>
+    <h2 class="section-title">Defense-grade thinking for everyday threats</h2>
+    <p class="section-body">
+      With a background supporting IT and security operations at the Georgia Tech Research Institute — one of the nation's leading defense research environments — I bring enterprise-level cybersecurity thinking to businesses and individuals who need it most.
+    </p>
+    <p class="section-body" style="margin-top: 1rem;">
+      Holding a CompTIA Security+ certification and years of hands-on experience in high-stakes environments, I translate complex security challenges into clear, actionable protection.
+    </p>
+    <div class="about-tags">
+      <span class="tag">CompTIA Security+</span>
+      <span class="tag">GTRI Background</span>
+      <span class="tag">CMMC Compliance</span>
+      <span class="tag">NIST Framework</span>
+      <span class="tag">SMB Security</span>
+      <span class="tag">Incident Response</span>
+    </div>
+  </div>
+  <div class="about-visual reveal">
+    <div class="about-shield">
+      <div class="shield-ring"></div>
+      <div class="shield-ring"></div>
+      <div class="shield-ring"></div>
+      <div class="shield-center">
+        <span class="shield-icon">🛡️</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-header reveal">
+    <div class="section-label">What I offer</div>
+    <h2 class="section-title">Security that fits your situation</h2>
+    <p class="section-body">From full security audits to ongoing advisory retainers — tailored for small businesses that can't afford to get it wrong.</p>
+  </div>
+  <div class="services-grid reveal">
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <span class="service-icon">🔍</span>
+      <div class="service-name">Security Audit</div>
+      <div class="service-desc">A comprehensive assessment of your current security posture. You'll get a detailed report and a prioritized action plan — no jargon.</div>
+      <div class="service-price">Starting at $750</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <span class="service-icon">🛡️</span>
+      <div class="service-name">CMMC Compliance</div>
+      <div class="service-desc">Helping DoD contractors navigate the Cybersecurity Maturity Model Certification process from gap analysis to certification-ready.</div>
+      <div class="service-price">From $900/mo retainer</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <span class="service-icon">📡</span>
+      <div class="service-name">Remote IT Security Retainer</div>
+      <div class="service-desc">Ongoing security monitoring, policy oversight, and advisory support for small businesses that need a security partner, not a full hire.</div>
+      <div class="service-price">From $300/mo</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">04</div>
+      <span class="service-icon">🎯</span>
+      <div class="service-name">Strategy Call</div>
+      <div class="service-desc">A focused 60-minute session to assess your biggest security risks and walk away with a clear, prioritized next-step plan.</div>
+      <div class="service-price">$150 flat</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">05</div>
+      <span class="service-icon">👥</span>
+      <div class="service-name">Security Awareness Training</div>
+      <div class="service-desc">Live or recorded training sessions for your team. The human layer is your biggest vulnerability — let's fix that.</div>
+      <div class="service-price">Custom pricing</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">06</div>
+      <span class="service-icon">📋</span>
+      <div class="service-name">Policy Development</div>
+      <div class="service-desc">Custom security policies, incident response plans, and documentation your business needs for compliance and best practice.</div>
+      <div class="service-price">Starting at $500</div>
+    </div>
+  </div>
+</section>
+
+<!-- COURSES -->
+<section class="courses" id="courses">
+  <div class="courses-layout">
+    <div class="reveal">
+      <div class="section-label">Education</div>
+      <h2 class="section-title">Learn from someone in the field</h2>
+      <p class="section-body">
+        Whether you're studying for your first cert or trying to break into cybersecurity, these courses give you real-world knowledge — not textbook theory.
+      </p>
+      <div style="margin-top: 2rem;">
+        <a href="#" class="btn-primary">View All Courses</a>
+      </div>
+    </div>
+    <div class="course-list reveal">
+      <div class="course-item">
+        <div class="course-item-left">
+          <div class="course-dot" style="background: var(--green-pale);"></div>
+          <div class="course-name">CompTIA Security+ Complete Prep</div>
+        </div>
+        <span class="course-badge badge-live">Live</span>
+      </div>
+      <div class="course-item">
+        <div class="course-item-left">
+          <div class="course-dot"></div>
+          <div class="course-name">Cybersecurity for Small Business Owners</div>
+        </div>
+        <span class="course-badge badge-soon">Coming Soon</span>
+      </div>
+      <div class="course-item">
+        <div class="course-item-left">
+          <div class="course-dot"></div>
+          <div class="course-name">Intro to CMMC Compliance</div>
+        </div>
+        <span class="course-badge badge-soon">Coming Soon</span>
+      </div>
+      <div class="course-item">
+        <div class="course-item-left">
+          <div class="course-dot"></div>
+          <div class="course-name">Break Into IT: Your First Security Job</div>
+        </div>
+        <span class="course-badge badge-soon">Coming Soon</span>
+      </div>
+      <div class="course-item">
+        <div class="course-item-left">
+          <div class="course-dot" style="background: var(--ozone-glow);"></div>
+          <div class="course-name">Home Lab Setup for Security Pros</div>
+        </div>
+        <span class="course-badge badge-free">Free</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="reveal">
+    <div class="section-label">Digital Products</div>
+    <h2 class="section-title">Tools you can use today</h2>
+    <p class="section-body">Downloadable templates, checklists, and toolkits built from real-world experience. One purchase, yours to keep.</p>
+  </div>
+  <div class="products-grid reveal">
+    <div class="product-card">
+      <span class="product-emoji">📋</span>
+      <div class="product-name">SMB Security Audit Checklist</div>
+      <div class="product-desc">A comprehensive checklist to assess your small business security posture in under a day.</div>
+      <div class="product-price">$27</div>
+    </div>
+    <div class="product-card">
+      <span class="product-emoji">🔒</span>
+      <div class="product-name">CMMC Level 1 Starter Kit</div>
+      <div class="product-desc">Everything a DoD contractor needs to begin their CMMC Level 1 compliance journey.</div>
+      <div class="product-price">$97</div>
+    </div>
+    <div class="product-card">
+      <span class="product-emoji">📝</span>
+      <div class="product-name">Security Policy Template Pack</div>
+      <div class="product-desc">5 ready-to-use policy templates: AUP, incident response, password policy, vendor risk & more.</div>
+      <div class="product-price">$47</div>
+    </div>
+    <div class="product-card">
+      <span class="product-emoji">🎓</span>
+      <div class="product-name">Security+ Study Guide</div>
+      <div class="product-desc">A no-fluff study guide built from real exam experience. Domain-by-domain breakdown with practice questions.</div>
+      <div class="product-price">$37</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="section-label reveal">Ready to get protected?</div>
+  <h2 class="section-title reveal">Your layer of protection starts here.</h2>
+  <p class="section-body reveal">Whether you need a security audit, a consulting partner, or a course to level up your career — let's talk about what makes sense for you.</p>
+  <div class="reveal">
+    <a href="mailto:hello@ozonelayer.io" class="btn-primary" style="font-size: 1rem; padding: 1rem 2.5rem;">Book a Free Intro Call</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Ozone Layer</div>
+  <p class="footer-copy">© 2026 Ozone Layer. All rights reserved.</p>
+  <ul class="footer-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#courses">Courses</a></li>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
