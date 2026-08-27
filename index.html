@@ -669,6 +669,131 @@
     opacity: 1;
     transform: translateY(0);
   }
+
+  /* NAV TOGGLE (hamburger) — hidden on desktop */
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 32px;
+    height: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 101;
+  }
+
+  .nav-toggle span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--cream);
+    border-radius: 2px;
+    transition: transform 0.25s, opacity 0.25s;
+  }
+
+  .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* ─────────────────────────────────────────
+     MOBILE (≤768px) — everything below is
+     scoped to this breakpoint only; desktop
+     styles above are untouched.
+     ───────────────────────────────────────── */
+  @media (max-width: 768px) {
+
+    nav { padding: 1rem 1.25rem; }
+
+    .nav-toggle { display: flex; }
+
+    .nav-links {
+      position: fixed;
+      top: 0; right: 0;
+      height: 100vh;
+      width: min(78vw, 320px);
+      background: var(--green-deep);
+      border-left: 1px solid rgba(168, 216, 200, 0.12);
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0;
+      padding: 6rem 1.75rem 2rem;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+      z-index: 100;
+    }
+
+    .nav-links.open { transform: translateX(0); }
+
+    .nav-links li { width: 100%; }
+
+    .nav-links a {
+      display: block;
+      width: 100%;
+      padding: 0.9rem 0;
+      font-size: 0.95rem;
+      border-bottom: 1px solid rgba(168, 216, 200, 0.08);
+    }
+
+    .nav-links .nav-cta {
+      display: inline-block;
+      width: auto;
+      border-bottom: none;
+      margin-top: 0.75rem;
+      text-align: center;
+    }
+
+    /* HERO */
+    .hero { padding: 6.5rem 1.5rem 3rem; }
+    .hero-title { font-size: clamp(2.5rem, 12vw, 3.5rem); }
+    .hero-sub { max-width: 100%; }
+    .hero-stats { flex-wrap: wrap; gap: 1.5rem 2rem; margin-top: 3rem; }
+
+    /* SECTIONS */
+    section { padding: 4rem 1.5rem; }
+    .cta-section { padding: 4rem 1.5rem; }
+
+    .section-title { font-size: clamp(1.75rem, 8vw, 2.25rem); }
+    .section-body { max-width: 100%; }
+
+    /* ABOUT */
+    .about {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      text-align: center;
+    }
+
+    .about-visual { order: -1; }
+    .about-tags { justify-content: center; }
+
+    /* SERVICES */
+    .services-grid { grid-template-columns: 1fr; }
+
+    /* COURSES */
+    .courses-layout {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    /* PRODUCTS */
+    .products-grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+
+    /* FOOTER */
+    footer {
+      flex-direction: column;
+      gap: 1.5rem;
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+    }
+
+    .footer-links { flex-wrap: wrap; justify-content: center; gap: 1.25rem; }
+  }
+
+  @media (max-width: 420px) {
+    .products-grid { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -679,7 +804,10 @@
     <div class="logo-mark"><div class="logo-mark-inner"></div></div>
     Ozone Layer
   </a>
-  <ul class="nav-links">
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="scan.html" class="nav-cta">Free Readiness Scan</a></li>
@@ -938,6 +1066,25 @@
     });
   }, { threshold: 0.1 });
   reveals.forEach(el => observer.observe(el));
+
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+
+  function closeNav() {
+    navToggle.classList.remove('open');
+    navLinks.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  }
+
+  navToggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    navToggle.classList.toggle('open', isOpen);
+    navToggle.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', closeNav);
+  });
 </script>
 
 </body>
