@@ -186,8 +186,9 @@
       content: '';
       position: absolute;
       top: 100%;
-      left: 0;
-      right: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 280px;
       height: 18px;
     }
 
