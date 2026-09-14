@@ -150,6 +150,7 @@
     left: 50%;
     transform: translateX(-50%) translateY(8px);
     min-width: 210px;
+    max-width: 280px;
     background: rgba(13, 43, 26, 0.98);
     border: 1px solid rgba(168, 216, 200, 0.15);
     border-radius: 12px;
@@ -173,6 +174,8 @@
     text-transform: none;
     color: var(--green-mist);
     text-decoration: none;
+    line-height: 1.35;
+    white-space: normal;
     transition: background 0.2s, color 0.2s;
   }
 
