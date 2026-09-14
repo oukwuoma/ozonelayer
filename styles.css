@@ -182,6 +182,15 @@
   .dropdown-menu a:hover { background: rgba(168,216,200,0.08); color: var(--white); }
 
   @media (min-width: 769px) {
+    .nav-dropdown::before {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      height: 18px;
+    }
+
     .nav-dropdown:hover .dropdown-menu,
     .nav-dropdown.open .dropdown-menu {
       opacity: 1;
