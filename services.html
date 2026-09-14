@@ -20,12 +20,26 @@
     <span></span><span></span><span></span>
   </button>
   <ul class="nav-links" id="navLinks">
-    <li><a href="about.html">About</a></li>
-    <li><a href="credentials.html">Credentials</a></li>
-    <li><a href="services.html">Services</a></li>
+    <li class="nav-dropdown">
+      <button type="button" class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+        Who We Are <span class="nav-dropdown-caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li><a href="about.html">About</a></li>
+        <li><a href="credentials.html">Credentials</a></li>
+      </ul>
+    </li>
+    <li class="nav-dropdown">
+      <button type="button" class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+        What We Offer <span class="nav-dropdown-caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li><a href="services.html">Services</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="products.html">Products</a></li>
+      </ul>
+    </li>
     <li><a href="scan.html" class="nav-cta">Free Readiness Scan</a></li>
-    <li><a href="courses.html">Courses</a></li>
-    <li><a href="products.html">Products</a></li>
     <li><a href="index.html#contact" class="nav-cta">Work With Me</a></li>
   </ul>
 </nav>
@@ -36,6 +50,15 @@
     <div class="section-label">What I offer</div>
     <h2 class="section-title">Security that fits your situation</h2>
     <p class="section-body">From full security audits to ongoing advisory retainers — tailored for small businesses that can't afford to get it wrong.</p>
+  </div>
+
+  <div class="scan-promo reveal">
+    <div class="scan-promo-badge">Free</div>
+    <div class="scan-promo-content">
+      <div class="scan-promo-title">Not sure where you stand? Start with the Free Readiness Scan.</div>
+      <div class="scan-promo-desc">Get a fast, no-cost snapshot of your CMMC / NIST 800-171 readiness before committing to a full audit or retainer.</div>
+    </div>
+    <a href="scan.html" class="scan-promo-cta">Start Free Scan →</a>
   </div>
 
   <div class="billing-toggle reveal" id="billingToggle" role="group" aria-label="Billing period">
